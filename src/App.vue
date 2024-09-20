@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <router-link to="/register">Đăng ký</router-link>
-    <router-link to="/login">Đăng nhập</router-link>
-    <router-view></router-view> <!-- Đây là nơi hiển thị các component dựa vào route -->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -11,3 +9,10 @@ export default {
   name: 'App',
 };
 </script>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+}
+</style>
