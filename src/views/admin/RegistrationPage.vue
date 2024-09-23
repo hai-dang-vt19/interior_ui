@@ -15,7 +15,7 @@
         <button type="submit">Đăng Nhập</button>
       </form>
       <div class="footer">
-        <p>Đã có tài khoản? <router-link to="/login">Đăng nhập</router-link></p>
+        <p>Đã có tài khoản? <router-link :to="{name: 'LoginPage'}">Đăng nhập</router-link></p>
       </div>
     </div>
   </div>

@@ -18,6 +18,8 @@ const actions = {
     commit('setUser', user);
   },
   login({commit}, user) {
+    console.log(user);
+    
     commit('setUser', user);
   }
 };
