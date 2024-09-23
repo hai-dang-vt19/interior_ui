@@ -12,7 +12,7 @@
         <button type="submit">Đăng nhập</button>
       </form>
       <div class="footer">
-        <p>Chưa có tài khoản? <router-link to="/register">Đăng ký</router-link></p>
+        <p>Chưa có tài khoản? <router-link :to="{name: 'RegistrationPage'}">Đăng ký</router-link></p>
       </div>
     </div>
   </div>
