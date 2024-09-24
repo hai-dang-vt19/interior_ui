@@ -6,7 +6,22 @@
         <b-tabs pills card vertical end>
           <b-tab title="Thiết kế" active>
             <b-card-text>
-              <b-table striped hover :items="items" :fields="fields">
+              <b-table 
+                :striped="striped"
+                :bordered="bordered"
+                :borderless="borderless"
+                :outlined="outlined"
+                :small="small"
+                :hover="hover"
+                :dark="dark"
+                :fixed="fixed"
+                :foot-clone="footClone"
+                :no-border-collapse="noCollapse"
+                :head-variant="headVariant"
+                :table-variant="tableVariant"
+                :items="items"
+                :fields="fields"
+              >
                 <template #cell(actions)="dt">
                   <b-button size="sm" @click="editItemProduct(dt.item)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
@@ -47,7 +62,19 @@ export default {
         {key: 'discount', label: 'Chiết khấu'},
         {key: 'status', label: 'Loại thiết kế'},
         {key: 'actions', label: 'Action'}
-      ]
+      ],
+      striped: true,
+      bordered: false,
+      borderless: false,
+      outlined: true,
+      small: false,
+      hover: true,
+      dark: false,
+      fixed: false,
+      footClone: false,
+      headVariant: '',
+      tableVariant: '',
+      noCollapse: false
     }
   },
 
@@ -60,9 +87,11 @@ export default {
 
   methods: {
     ...mapActions("product", ["getDataProduct", 'editProduct', 'deleteProduct']),
+    
     editItemProduct(item) {
       this.editProduct(item);
     },
+    
     deleteItemProduct(item) {
       this.deleteProduct(item);
     }
