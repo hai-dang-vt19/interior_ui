@@ -1,9 +1,11 @@
 import Vue from "vue";
 import Router from "vue-router";
 
-import AdminLayout from "@/layouts/AdminLayout.vue";
+import AuthLayout from "@/layouts/AuthLayout.vue";
 import RegistrationPage from "@/views/admin/RegistrationPage.vue";
 import LoginPage from "@/views/admin/LoginPage.vue";
+
+import AdminLayout from "@/layouts/AdminLayout.vue";
 import DashBoard from "@/views/admin/DashBoard.vue";
 
 import ClientLayout from "@/layouts/ClientLayout.vue";
@@ -13,8 +15,8 @@ Vue.use(Router);
 
 const routes = [
   {
-    path: '/admin',
-    component: AdminLayout,
+    path: '/auth',
+    component: AuthLayout,
     children: [
       {
         path: 'register',
@@ -26,9 +28,16 @@ const routes = [
         name: 'LoginPage',
         component: LoginPage
       },
+    ],
+  },
+  
+  {
+    path: '/admin',
+    component: AdminLayout,
+    children: [
       {
         path: 'dashboard',
-        name: 'dashboard',
+        name: 'DashboardPage',
         component: DashBoard
       }
     ],
