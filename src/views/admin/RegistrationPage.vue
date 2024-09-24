@@ -1,25 +1,67 @@
 <template>
   <div class="from_register">
-    <div class="container">
-      <h2>Đăng ký</h2>
-      <form @submit.prevent="onSubmit">
-        <label for="username">Username</label>
-        <input type="text" id="username" v-model="username" required />
+    <b-card class="formatCard">
+      <div class="container">
+        <h2 class="text-center m-5">Đăng ký</h2>
+        <b-form @submit.prevent="onSubmit">
+          <b-form-group
+            id="group-username"
+            label="User name"
+            label-for="username"
+            class="mb-2"
+          >
+            <b-form-input
+              id="username"
+              v-model="username"
+              type="text"
+              required
+            ></b-form-input>
+          </b-form-group>
 
-        <label for="email">Email</label>
-        <input type="email" id="email" v-model="email" required />
+          <b-form-group
+            id="group-email"
+            label="Email address"
+            label-for="email"
+            class="mb-2"
+          >
+            <b-form-input
+              id="email"
+              v-model="email"
+              type="email"
+              placeholder="Enter email"
+              required
+            ></b-form-input>
+          </b-form-group>
 
-        <label for="password">Password</label>
-        <input type="password" id="password" v-model="password" required />
+          <b-form-group
+            id="group-password"
+            label="Password"
+            label-for="password"
+            class="mb-2"
+          >
+            <b-form-input
+              id="password"
+              v-model="password"
+              type="password"
+              required
+            ></b-form-input>
+          </b-form-group>
 
-        <button type="submit">Đăng Nhập</button>
-      </form>
-      <div class="footer">
-        <p>Đã có tài khoản? <router-link :to="{name: 'LoginPage'}">Đăng nhập</router-link></p>
+          <b-button variant="primary" type="submit" class="mt-3 mb-1 w-100">Đăng nhập</b-button>
+        </b-form>
+        <div class="footer">
+          <p>
+            Chưa có tài khoản?
+            <router-link :to="{ name: 'LoginPage' }"
+              >Đăng nhập</router-link
+            >
+          </p>
+        </div>
       </div>
-    </div>
+    </b-card>
   </div>
 </template>
+
 
 
 <script>
@@ -58,80 +100,11 @@ export default {
   align-items: center;
   height: 100vh;
 }
-
-.container {
-  background-color: #ffffff; /* Nền trắng cho container */
+.formatCard {
+  width: calc(100% - 50%);
+  max-width: 25rem;
   border-radius: 15px; /* Bo tròn góc */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
-  padding: 40px;
-  width: 100%; /* Chiều rộng 100% */
-  max-width: 400px; /* Chiều rộng tối đa */
-}
-
-h2 {
-  text-align: center;
-  color: #333333; /* Màu chữ tối */
-  margin-bottom: 20px;
-  font-size: 24px; /* Kích thước font tiêu đề */
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-}
-
-label {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #e2e8f0; /* Đường viền nhẹ */
-  border-radius: 8px; /* Bo tròn góc */
-  font-size: 16px;
-  transition: border-color 0.3s;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border-color: #4A90E2; /* Màu khi focus */
-  outline: none;
-}
-
-button {
-  background-color: #4A90E2; /* Màu xanh dương */
-  color: #ffffff; /* Màu chữ trắng */
-  padding: 12px;
   border: none;
-  border-radius: 8px; /* Bo tròn góc */
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
 }
-
-button:hover {
-  background-color: #357ABD; /* Màu tối hơn khi hover */
-}
-
-.footer {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-.footer a {
-  color: #4A90E2; /* Màu liên kết */
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline; /* Gạch chân khi hover */
-}
-
-
 </style>
