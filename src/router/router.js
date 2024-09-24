@@ -7,6 +7,15 @@ import LoginPage from "@/views/admin/LoginPage.vue";
 
 import AdminLayout from "@/layouts/AdminLayout.vue";
 import DashBoard from "@/views/admin/DashBoard.vue";
+import OrderPage from "@/views/admin/OrderPage.vue";
+import ProductDesignPage from "@/views/admin/ProductDesignPage.vue";
+import WarehoursePage from "@/views/admin/WarehoursePage.vue";
+import CustomerPage from "@/views/admin/CustomerPage.vue";
+import StaffPage from "@/views/admin/StaffPage.vue";
+import AgencyPage from "@/views/admin/AgencyPage.vue";
+import DiscountPage from "@/views/admin/DiscountPage.vue";
+import RolePage from "@/views/admin/RolePage.vue";
+import HistorySystemPage from "@/views/admin/HistorySystemPage.vue";
 
 import ClientLayout from "@/layouts/ClientLayout.vue";
 import HomePage from "@/views/client/HomePage.vue";
@@ -39,6 +48,51 @@ const routes = [
         path: 'dashboard',
         name: 'DashboardPage',
         component: DashBoard
+      },
+      {
+        path: 'order',
+        name: 'OrderPage',
+        component: OrderPage
+      },
+      {
+        path: 'product-design',
+        name: 'ProductDesignPage',
+        component: ProductDesignPage
+      },
+      {
+        path: 'warehourse',
+        name: 'WarehoursePage',
+        component: WarehoursePage
+      },
+      {
+        path: 'customer',
+        name: 'CustomerPage',
+        component: CustomerPage
+      },
+      {
+        path: 'staff',
+        name: 'StaffPage',
+        component: StaffPage
+      },
+      {
+        path: 'agency',
+        name: 'AgencyPage',
+        component: AgencyPage
+      },
+      {
+        path: 'discount',
+        name: 'DiscountPage',
+        component: DiscountPage
+      },
+      {
+        path: 'role',
+        name: 'RolePage',
+        component: RolePage
+      },
+      {
+        path: 'history-system',
+        name: 'HistorySystemPage',
+        component: HistorySystemPage
       }
     ],
   },
