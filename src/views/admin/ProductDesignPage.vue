@@ -2,11 +2,9 @@
   <div>
     <p class="fs-4">Sản phẩm thiết kế</p>
 
-    <div class="input-group mb-3">
+    <div class="fm-input-group my-4">
       <input type="text" class="form-control" placeholder="Search" :value="valueFilter" @input="updateFilter($event.target.value)">
-      <div class="input-group-append" role="button">
-        <span class="input-group-text" id="basic-addon2" @click="filterItemProduct()">Search</span>
-      </div>
+      <button class="btn btn-primary mx-1" @click="filterItemProduct()">Search</button>
     </div>
     
     <div>
@@ -130,5 +128,10 @@ export default {
   margin: 0 0.1rem;
   padding: 1px 6px 2px 6px;
   width: fit-content;
+}
+
+.fm-input-group {
+  display: flex;
+  width: calc(100% - 60%);
 }
 </style>

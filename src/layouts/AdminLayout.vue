@@ -88,7 +88,7 @@
       </svg>
       <div :class="{'group-text-setting': true, 'open': !isNavOpen}">
         <router-link to='#' class="mx-2 rounded-top link-setting">Thông tin</router-link>
-        <router-link to='#' class="mx-2 rounded-bottom link-setting">Đăng xuất</router-link>
+        <router-link :to="{name: 'LoginPage'}" class="mx-2 rounded-bottom link-setting">Đăng xuất</router-link>
       </div>
     </div>
 
