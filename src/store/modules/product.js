@@ -1,4 +1,4 @@
-import {apiListProduct, apiDeleteProduct} from '@/api/apiProduct';
+import {apiListProduct, apiDeleteProduct, apiSortProduct} from '@/api/apiProduct';
 
 const state = {
   dataProduct: [],
@@ -54,9 +54,17 @@ const actions = {
     return true;
   },
 
-  sortProduct({commit}, sort) {
-    console.log(sort);
-    commit('setDataProduct', state.dataProduct);    
+  async sortProduct({commit}, sort) {
+    const {response} = await apiSortProduct(sort);
+    
+    // if (response.error) {
+    //   console.log(response.error);
+    //   return false;
+    // }
+
+    commit('setDataProduct', response);
+
+    return true;    
   },
 };
 

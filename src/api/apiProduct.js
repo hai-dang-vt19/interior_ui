@@ -41,3 +41,12 @@ export async function apiDetailProduct(params) {
     return {error};
   }
 }
+export async function apiSortProduct(params) {
+  // try {
+    console.log(params['column'], params['sort']);
+    
+    return params;
+  // } catch (error) {
+  //   return {error};
+  // }
+}
