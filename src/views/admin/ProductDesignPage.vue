@@ -11,9 +11,18 @@
       <b-table-simple hover small responsive outlined bordered class="fm-table">
         <b-thead head-variant="dark" class="fm-thead">
           <b-tr>
-            <b-th v-for="(fieldHeaderTable, index) in fieldHeaderTables" :key="index"
-              @click="sortItemProduct(fieldHeaderTable.key)">
-              <span role="button">{{ fieldHeaderTable.title }}</span>
+            <b-th v-for="(fieldHeaderTable, index) in fieldHeaderTables" :key="index">
+              <div class="d-flex justify-content-between">
+                <span role="button">{{ fieldHeaderTable.title }}</span>
+                <div class="group-sort" v-if="fieldHeaderTable.key != 'action'">
+                  <svg @click="sortItemProduct(fieldHeaderTable.key, 'asc')" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-caret-up-fill fm-svg" viewBox="0 0 16 16">
+                    <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                  </svg>
+                  <svg @click="sortItemProduct(fieldHeaderTable.key, 'desc')" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-caret-down-fill fm-svg" viewBox="0 0 16 16">
+                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                  </svg>
+                </div>
+              </div>
             </b-th>
           </b-tr>
         </b-thead>
@@ -95,8 +104,8 @@ export default {
       this.deleteProduct(product);
     },
 
-    sortItemProduct(sort) {
-      this.sortProduct(sort);
+    sortItemProduct(column, sort) {
+      this.sortProduct({'column': column, 'sort': sort});
     },
 
     updateFilter(value) {
@@ -133,5 +142,26 @@ export default {
 .fm-input-group {
   display: flex;
   width: calc(100% - 60%);
+}
+
+.group-sort {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+.fm-svg {
+  width: 0.7rem;
+  margin: -1px;
+  padding: 0;
+  color: rgba(151, 151, 151, 0.829);
+  cursor: pointer;
+}
+.fm-svg:hover {
+  color: #292929;
+}
+.fm-svg-active {
+  color: #292929;
 }
 </style>
