@@ -2,7 +2,7 @@
   <div>
     <!-- Danh sách điều hướng -->
     <ul class="fm-menu">
-      <li v-for="nSection in 2" :key="nSection" :class="{ active: activeSection === 'section' + nSection }"
+      <li v-for="nSection in 3" :key="nSection" :class="{ active: activeSection === 'section' + nSection }"
         class="item-scpy" @click="scrollToSection('section' + nSection)">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-quote"
           viewBox="0 0 16 16">
@@ -62,50 +62,23 @@
           </div>
         </div>
       </section>
+
+      <section class="product-section section" id="section3" ref="section3">
+        <ProductDesign></ProductDesign>
+      </section>
     </div>
-
-
-    <ul>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-    </ul>
   </div>
 </template>
 
 <script>
-import SlideCardesign from "@/components/admin/SlideCardesign.vue";
+import SlideCardesign from "@/components/client/SlideCardesign.vue";
+import ProductDesign from '@/components/client/ProductDesign.vue';
+
 export default {
   name: 'HomePage',
   components: {
-    SlideCardesign
+    SlideCardesign,
+    ProductDesign
   },
   data() {
     return {
