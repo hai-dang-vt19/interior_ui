@@ -10,9 +10,10 @@
         <h5 class="card-title">Behzad Ghaffarian {{ dataSlideCard.name }}</h5>
         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
       </div>
-      <img :src="require(`@/assets/${dataSlideCard.fileName}`)" class="card-img-bottom img-slide" alt="..." loading="lazy"
+      <!-- <img :src="require(`@/assets/${dataSlideCard.urlFile}`)" class="card-img-bottom img-slide" alt="..." loading="lazy"
         v-bind:style="{height: (13.063 - index)+'rem'}"
-      >
+      > -->
+      <div class="card-img-bottom img-slide" :style="{backgroundImage: `url(${dataSlideCard.urlFile})`}"></div>
     </div>
   </div>
 </template>
@@ -23,9 +24,9 @@ export default {
   data() {
     return {
       dataSlideCards: [
-        {id: 1, name: 'A', fileName: 'image-47.png'},
-        {id: 2, name: 'B', fileName: 'image-47-2.png',},
-        {id: 3, name: 'C', fileName: 'image-47-3.png',},
+        {id: 1, name: 'A', urlFile: require('@/assets/image-47.png')},
+        {id: 2, name: 'B', urlFile: require('@/assets/image-47-2.png')},
+        {id: 3, name: 'C', urlFile: require('@/assets/image-47-3.png')},
       ]
     }
   }
@@ -62,9 +63,11 @@ export default {
 }
 
 .img-slide {
-  max-width: 100%;
-  object-fit: cover;
-  object-position: center;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 
