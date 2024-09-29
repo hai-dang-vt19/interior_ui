@@ -2,13 +2,25 @@
   <div>
     <p class="fs-4">Sản phẩm thiết kế</p>
 
-    <div class="fm-input-group my-4">
-      <input type="text" class="form-control" placeholder="Search" :value="valueFilter" @input="updateFilter($event.target.value)">
-      <button class="btn btn-primary mx-1" @click="filterItemProduct()">Search</button>
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="fm-input-group my-4">
+        <input type="text" class="form-control" placeholder="Search" :value="valueFilter" @input="updateFilter($event.target.value)">
+        <button class="btn btn-primary mx-1" @click="filterItemProduct()">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          </svg>
+        </button>
+      </div>
+      <div>
+        <b-button @click="showAddProduct()">Thêm thiết kế</b-button>
+      </div>
+    </div>
+    <div v-if="!isShowAddProduct" class="card mb-3 p-2">
+      <AddProduct :dataFields="'Chuyeenf array vaof day'"></AddProduct>
     </div>
     
-    <div>
-      <b-table-simple hover small responsive outlined bordered class="fm-table">
+    <div class="card">
+      <b-table-simple hover small responsive class="fm-table rounded-3">
         <b-thead head-variant="dark" class="fm-thead">
           <b-tr>
             <b-th v-for="(fieldHeaderTable, index) in fieldHeaderTables" :key="index">
@@ -65,10 +77,16 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import AddProduct from '@/components/admin/AddProduct.vue';
 
 export default {
+  components: {
+    'AddProduct': AddProduct
+  },
+
   data() {
     return {
+      isShowAddProduct: false,
       fieldHeaderTables: [
         { key: 'product_id', title: 'Code' },
         { key: 'product_name', title: 'Tên thiết kế' },
@@ -92,6 +110,10 @@ export default {
   },
 
   methods: {
+    showAddProduct() {
+      this.isShowAddProduct = !this.isShowAddProduct;
+    },
+
     ...mapActions("product", [
       "getDataProduct", 'editProduct', 'deleteProduct', 'sortProduct', 'getDataProduct'
     ]),
@@ -126,6 +148,7 @@ export default {
 <style scoped>
 .fm-table {
   height: calc(100vh - 30vh);
+  margin: 0;
 }
 
 .fm-thead {
