@@ -4,9 +4,6 @@
         <div class="container">
           <div
             class="d-flex fm-card"
-            @mouseover="stopScroll"
-            @mouseleave="startScroll"
-            ref="scrollContainer"
           >
             <div class="col-3 mb-4" v-for="n in 20" :key="n">
               <div class="card card-has-bg click-col">
@@ -31,12 +28,6 @@
                         </svg>
 
                     </div>
-                    <!-- <div class="media">
-                      <div class="media-body">
-                        <h6 class="my-0 text-dark d-block">Oz Coruhlu</h6>
-                        <small>Director of UI/UX</small>
-                      </div>
-                    </div> -->
                   </div>
                 </div>
               </div>
@@ -53,32 +44,8 @@
     data() {
       return {
         imgSrc: require('@/assets/product-1.png'), // Đường dẫn đến hình ảnh
-        scrollInterval: null,
-        scrollSpeed: 1, // Tốc độ cuộn
-        direction: 1 // 1: phải, -1: trái
       };
     },
-    methods: {
-      startScroll() {
-        const container = this.$refs.scrollContainer;
-        this.scrollInterval = setInterval(() => {
-          container.scrollLeft += this.scrollSpeed * this.direction;
-  
-          // Kiểm tra nếu đã cuộn đến cuối hoặc đầu
-          if (container.scrollLeft >= container.scrollWidth - container.clientWidth) {
-            this.direction = -1; // Đổi hướng sang trái
-          } else if (container.scrollLeft <= 0) {
-            this.direction = 1; // Đổi hướng sang phải
-          }
-        }, 10); // Thay đổi thời gian để điều chỉnh tốc độ cuộn
-      },
-      stopScroll() {
-        clearInterval(this.scrollInterval);
-      }
-    },
-    mounted() {
-      this.startScroll();
-    }
   }
   </script>
   
