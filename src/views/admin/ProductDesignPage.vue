@@ -104,6 +104,10 @@ export default {
     ...mapGetters('product', [
       'dataProduct', 'valueFilter'
     ]),
+    ...mapGetters('master', [
+      'dataTypeProducts', 'dataMaterials', 'dataColors'
+    ]),
+
     dataProducts() {
       return this.dataProduct; // Lấy dữ liệu từ getter
     },
@@ -187,4 +191,5 @@ export default {
 .fm-svg-active {
   color: #292929;
 }
+
 </style>
