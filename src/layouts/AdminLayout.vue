@@ -116,6 +116,8 @@ export default {
 
 <style scoped>
 .nav-interior {
+  position: sticky;
+  top: 0;
   display: block;
   overflow-y: auto;
   height: 100vh;

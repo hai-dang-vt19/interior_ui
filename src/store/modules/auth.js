@@ -6,6 +6,10 @@ const state = {
   },
 };
 
+const getters = {
+  user: state => state.user, // Cần là một hàm
+};
+
 const mutations = {
   setUser(state, user) {
     state.user = user;
@@ -21,10 +25,6 @@ const actions = {
     
     commit('setUser', user);
   }
-};
-
-const getters = {
-  user: state => state.user, // Cần là một hàm
 };
 
 export default {

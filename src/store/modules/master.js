@@ -12,9 +12,21 @@ const getters = {
     dataColors: state => state.dataColors
 }
 
+const mutations = {
+    setDataTypeProduct(state, dataTypeProducts) {
+        state.dataTypeProducts = dataTypeProducts;
+    },
+    setDataMaterial(state, dataMaterials) {
+        state.dataMaterials = dataMaterials;
+    },
+    setDataColor(state, dataColors) {
+        state.dataColors = dataColors;
+    }
+}
+
 const actions = {
     async getDataTypeProducts({commit}, valueTypeProduct) {
-        const response = await apiListColor(valueTypeProduct);
+        const response = await apiListTypeProduct(valueTypeProduct);
         console.log(response);
         
         if (response.error) {
@@ -48,15 +60,9 @@ const actions = {
     }
 }
 
-
-const mutations = {
-    setDataTypeProduct(state, dataTypeProducts) {
-        state.dataTypeProducts = dataTypeProducts;
-    },
-    setDataMaterial(state, dataMaterials) {
-        state.dataMaterials = dataMaterials;
-    },
-    setDataColor(state, dataColors) {
-        state.dataColors = dataColors;
-    }
+export default {
+    state,
+    getters,
+    actions,
+    mutations
 }

@@ -20,6 +20,18 @@ const getters = {
   valueFilter: state => state.valueFilter
 };
 
+const mutations = {
+  setDataProduct(state, dataProduct) {
+    state.dataProduct = dataProduct;
+  },
+  setProduct(state, product) {
+    state.product = product;
+  },
+  setFilterProduct(state, valueFilter) {
+    state.valueFilter = valueFilter;
+  }
+};
+
 const actions = {
   async getDataProduct({commit}, valueFilter) {
     const response = await apiListProduct(valueFilter);
@@ -66,18 +78,6 @@ const actions = {
 
     return true;    
   },
-};
-
-const mutations = {
-  setDataProduct(state, dataProduct) {
-    state.dataProduct = dataProduct;
-  },
-  setProduct(state, product) {
-    state.product = product;
-  },
-  setFilterProduct(state, valueFilter) {
-    state.valueFilter = valueFilter;
-  }
 };
 
 export default {

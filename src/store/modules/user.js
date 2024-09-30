@@ -8,6 +8,12 @@ const getters = {
     dataUser: state => state.dataUser
 };
 
+const mutations = {
+    setDataUser(state, dataUser) {
+        state.dataUser = dataUser;
+    },
+};
+
 const actions = {
     async getDataUser({ commit }, valueFilter) {
         const response = await apiListUser(valueFilter);
@@ -20,12 +26,6 @@ const actions = {
 
         commit('setDataUser', response);
         return true;
-    },
-};
-
-const mutations = {
-    setDataUser(state, dataUser) {
-        state.dataUser = dataUser;
     },
 };
 

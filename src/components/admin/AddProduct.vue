@@ -37,9 +37,21 @@
             </div>
             <div class="form-group col-md-4 my-1">
                 <label for="exampleInputEmail1">Màu sắc (nhiều)</label>
-                <select class="form-select">
-                    <option value="1">1</option>
-                </select>
+                <multiselect 
+                    v-model="value" 
+                    tag-placeholder="Add this as new tag" 
+                    placeholder="Search or add a tag" 
+
+                    label="name" 
+                    :options="options" 
+                    :multiple="true"
+                    :close-on-select="false"  
+                    :taggable="true"
+                    :searchable="true"
+                    track-by="id"
+                >
+                </multiselect>
+
                 <small id="emailHelp" class="form-text text-muted">{{dataFields}}</small>
             </div>
         </div>
@@ -50,8 +62,28 @@
 </template>
 
 <script>
+import { Multiselect } from "vue-multiselect";
+
 export default {
     name: 'AddProduct',
-    props: ['dataFields']
+    props: ['dataFields'],
+    components: {
+        Multiselect
+    },
+    data() {
+        return {
+            value: [
+                { name: 'Vue.js', id: '1' }
+            ],
+            options: [
+                { name: 'Vue.js', id: '1' },
+                { name: 'Adonis', id: '2' },
+                { name: 'Rails', id: '3' },
+                { name: 'Sinatra', id: '4' },
+                { name: 'Laravel', id: '5' },
+                { name: 'Phoenix', id: '6' }
+            ]
+        }
+    }
 }
 </script>
