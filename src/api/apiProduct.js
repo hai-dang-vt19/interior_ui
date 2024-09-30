@@ -1,6 +1,6 @@
 import axios from "axios";
-
-const domain = 'https://retoolapi.dev/yT1e19/data';
+import enumApi from "@/enums/enumApi";
+const domain = enumApi.domain;
 
 
 export async function apiListProduct(params) {
