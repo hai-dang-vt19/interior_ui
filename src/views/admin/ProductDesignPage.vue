@@ -71,7 +71,6 @@
         </b-tbody>
       </b-table-simple>
     </div>
-    
   </div>
 </template>
 
@@ -104,13 +103,21 @@ export default {
     ...mapGetters('product', [
       'dataProduct', 'valueFilter'
     ]),
-    ...mapGetters('master', [
-      'dataTypeProducts', 'dataMaterials', 'dataColors'
-    ]),
+    // ...mapGetters('master', [
+    //   'dataTypeProducts', 'dataMaterials', 'dataColors'
+    // ]),
 
     dataProducts() {
       return this.dataProduct; // Lấy dữ liệu từ getter
     },
+
+    listTypeProducts() {
+      return this.dataTypeProducts;
+    },
+    listMaterials() {
+      return this.dataMaterials;
+    },
+
   },
 
   methods: {
@@ -120,6 +127,10 @@ export default {
 
     ...mapActions("product", [
       "getDataProduct", 'editProduct', 'deleteProduct', 'sortProduct', 'getDataProduct'
+    ]),
+
+    ...mapActions("master", [
+      'getDataColors'
     ]),
 
     editItemProduct(product) {
@@ -145,6 +156,8 @@ export default {
 
   mounted() {
     this.getDataProduct(); // Gọi action để load dữ liệu
+    console.log(this.getDataColors());
+    
   }
 }
 </script>
