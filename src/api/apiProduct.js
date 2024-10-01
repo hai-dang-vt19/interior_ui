@@ -1,6 +1,6 @@
 import axios from "axios";
 import enumApi from "@/enums/enumApi";
-const domain = enumApi.domain;
+const domain = enumApi.domain + '/product';
 
 
 export async function apiListProduct(params) {

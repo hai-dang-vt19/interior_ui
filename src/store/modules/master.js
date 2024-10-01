@@ -57,10 +57,12 @@ const actions = {
         }
 
         commit('setDataColor', response);
+        return true;
     }
 }
 
 export default {
+    namespaced: true,
     state,
     getters,
     actions,
