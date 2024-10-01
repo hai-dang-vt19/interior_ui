@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="fs-4">Mã giảm giá</p>
+    <p class="fs-4">Màu</p>
 
     <div class="fm-input-group my-4">
       <input type="text" class="form-control" placeholder="Search">

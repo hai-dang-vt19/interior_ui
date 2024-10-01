@@ -2,48 +2,35 @@
     <div>
         <div class="row">
             <div class="form-group col-md-4 my-1">
-                <label for="exampleInputEmail1">Tên thiết kế</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">{{dataFields}}</small>
+                <label for="ip1">Tên thiết kế</label>
+                <input type="text" class="form-control" id="ip1" v-model="product_name">
+                <small id="emailHelp" class="form-text text-muted">{{product_name}}</small>
             </div>
             <div class="form-group col-md-4 my-1">
-                <label for="exampleInputEmail1">Số lượng</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">{{dataFields}}</small>
+                <label for="ip2">Số lượng</label>
+                <input type="number" class="form-control" id="ip2" v-model="stock_quantity">
+                <small id="emailHelp" class="form-text text-muted">{{stock_quantity}}</small>
             </div>
             <div class="form-group col-md-4 my-1">
-                <label for="exampleInputEmail1">Giá tiền</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">{{dataFields}}</small>
+                <label for="ip3">Giá tiền</label>
+                <input type="number" class="form-control" id="ip3" v-model="price">
+                <small id="emailHelp" class="form-text text-muted">{{price}}</small>
             </div>
             <div class="form-group col-md-4 my-1">
-                <label for="exampleInputEmail1">Hình ảnh</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <small id="emailHelp" class="form-text text-muted">{{dataFields}}</small>
+                <label for="ip4">Hình ảnh</label>
+                <input type="text" class="form-control" id="ip4" v-model="image">
+                <small id="emailHelp" class="form-text text-muted">{{image}}</small>
             </div>
             <div class="form-group col-md-4 my-1">
-                <label for="exampleInputEmail1">Loại sản phẩm (nhiều)</label>
-                <select class="form-select">
-                    <option value="1">1</option>
-                </select>
-                <small id="emailHelp" class="form-text text-muted">{{dataFields}}</small>
-            </div>
-            <div class="form-group col-md-4 my-1">
-                <label for="exampleInputEmail1">Chất liệu (nhiều)</label>
-                <select class="form-select">
-                    <option value="1">1</option>
-                </select>
-                <small id="emailHelp" class="form-text text-muted">{{dataFields}}</small>
-            </div>
-            <div class="form-group col-md-4 my-1">
-                <label for="exampleInputEmail1">Màu sắc (nhiều)</label>
+                <label for="sl1">Loại sản phẩm (nhiều)</label>
                 <multiselect 
-                    v-model="value" 
+                    id="sl1"
+                    v-model="typeProducts" 
                     tag-placeholder="Add this as new tag" 
                     placeholder="Search or add a tag" 
 
                     label="name" 
-                    :options="options" 
+                    :options="dataFields['dtslTypeProduct']" 
                     :multiple="true"
                     :close-on-select="false"  
                     :taggable="true"
@@ -52,38 +39,98 @@
                 >
                 </multiselect>
 
-                <small id="emailHelp" class="form-text text-muted">{{dataFields}}</small>
+                <small id="emailHelp" class="form-text text-muted">{{typeProducts}}</small>
+            </div>
+            <div class="form-group col-md-4 my-1">
+                <label for="sl2">Chất liệu (nhiều)</label>
+                <multiselect 
+                    id="sl2"
+                    v-model="materials" 
+                    tag-placeholder="Add this as new tag" 
+                    placeholder="Search or add a tag" 
+
+                    label="name" 
+                    :options="dataFields['dtslMaterial']" 
+                    :multiple="true"
+                    :close-on-select="false"  
+                    :taggable="true"
+                    :searchable="true"
+                    track-by="id"
+                >
+                </multiselect>
+                
+                <small id="emailHelp" class="form-text text-muted">{{materials}}</small>
+            </div>
+            <div class="form-group col-md-4 my-1">
+                <label for="sl3">Màu sắc (nhiều)</label>
+                <multiselect 
+                    id="sl3"
+                    v-model="colors" 
+                    tag-placeholder="Add this as new tag" 
+                    placeholder="Search or add a tag" 
+
+                    label="name" 
+                    :options="dataFields['dtslColor']" 
+                    :multiple="true"
+                    :close-on-select="false"  
+                    :taggable="true"
+                    :searchable="true"
+                    track-by="id"
+                >
+                </multiselect>
+
+                <small id="emailHelp" class="form-text text-muted">{{colors}}</small>
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <button class="btn btn-success">Lưu thông tin</button>
+            <button class="btn btn-success" @click="submitProduct()">Lưu thông tin</button>
         </div>
     </div>
 </template>
 
 <script>
 import { Multiselect } from "vue-multiselect";
+import { mapActions } from "vuex";
 
 export default {
     name: 'AddProduct',
-    props: ['dataFields'],
+    props: {
+        dataFields: Array
+    },
     components: {
         Multiselect
     },
     data() {
         return {
-            value: [
-                { name: 'Vue.js', id: '1' }
-            ],
-            options: [
-                { name: 'Vue.js', id: '1' },
-                { name: 'Adonis', id: '2' },
-                { name: 'Rails', id: '3' },
-                { name: 'Sinatra', id: '4' },
-                { name: 'Laravel', id: '5' },
-                { name: 'Phoenix', id: '6' }
-            ]
+            product_name: null,
+            stock_quantity: 0,
+            price: 0,
+            image: null,
+            discount_id: null,
+            typeProducts: [],
+            materials: [],
+            colors: [],
         }
+    },
+    
+    methods: {
+        ...mapActions("product", [
+            "createProduct"
+        ]),
+
+        submitProduct() {
+            const params = {
+                product_name: this.product_name,
+                stock_quantity: this.stock_quantity,
+                price: this.price,
+                image: this.image,
+                discount_id: this.discount_id,
+                typeProducts: this.typeProducts,
+                materials: this.materials,
+                colors: this.colors
+            };
+            this.createProduct(params);
+        },
     }
 }
 </script>

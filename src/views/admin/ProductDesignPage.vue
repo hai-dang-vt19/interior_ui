@@ -4,21 +4,30 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <div class="fm-input-group my-4">
-        <input type="text" class="form-control" placeholder="Search" :value="valueFilter" @input="updateFilter($event.target.value)">
+        <input type="text" class="form-control" placeholder="Search" :value="valueFilter"
+          @input="updateFilter($event.target.value)">
         <button class="btn btn-primary mx-1" @click="filterItemProduct()">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+            viewBox="0 0 16 16">
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
           </svg>
         </button>
       </div>
       <div>
-        <b-button @click="showAddProduct()">Thêm thiết kế</b-button>
+        <button @click="showAddProduct()" class="btn btn-primary">Thêm thiết kế</button>
       </div>
     </div>
     <div v-if="!isShowAddProduct" class="card mb-3 p-2">
-      <AddProduct :dataFields="'Chuyeenf array vaof day'"></AddProduct>
+      <AddProduct 
+        :dataFields="{
+          'dtslTypeProduct': dataSelectTypeProduct,
+          'dtslColor': dataSelectColor,
+          'dtslMaterial': dataSelectMaterial
+        }"
+      ></AddProduct>
     </div>
-    
+
     <div class="card">
       <b-table-simple hover small responsive class="fm-table rounded-3">
         <b-thead head-variant="dark" class="fm-thead">
@@ -27,11 +36,15 @@
               <div class="d-flex justify-content-between">
                 <span role="button">{{ fieldHeaderTable.title }}</span>
                 <div class="group-sort" v-if="fieldHeaderTable.key != 'action'">
-                  <svg @click="sortItemProduct(fieldHeaderTable.key, 'asc')" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-caret-up-fill fm-svg" viewBox="0 0 16 16">
-                    <path d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z"/>
+                  <svg @click="sortItemProduct(fieldHeaderTable.key, 'asc')" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" class="bi bi-caret-up-fill fm-svg" viewBox="0 0 16 16">
+                    <path
+                      d="m7.247 4.86-4.796 5.481c-.566.647-.106 1.659.753 1.659h9.592a1 1 0 0 0 .753-1.659l-4.796-5.48a1 1 0 0 0-1.506 0z" />
                   </svg>
-                  <svg @click="sortItemProduct(fieldHeaderTable.key, 'desc')" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-caret-down-fill fm-svg" viewBox="0 0 16 16">
-                    <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                  <svg @click="sortItemProduct(fieldHeaderTable.key, 'desc')" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" class="bi bi-caret-down-fill fm-svg" viewBox="0 0 16 16">
+                    <path
+                      d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
                   </svg>
                 </div>
               </div>
@@ -85,7 +98,7 @@ export default {
 
   data() {
     return {
-      isShowAddProduct: false,
+      isShowAddProduct: true,
       fieldHeaderTables: [
         { key: 'product_id', title: 'Code' },
         { key: 'product_name', title: 'Tên thiết kế' },
@@ -96,6 +109,9 @@ export default {
         { key: 'status', title: 'Trạng thái' },
         { key: 'action', title: 'Action' },
       ],
+      dataSelectTypeProduct: [],
+      dataSelectMaterial: [],
+      dataSelectColor: [],
     }
   },
 
@@ -103,9 +119,9 @@ export default {
     ...mapGetters('product', [
       'dataProduct', 'valueFilter'
     ]),
-    // ...mapGetters('master', [
-    //   'dataTypeProducts', 'dataMaterials', 'dataColors'
-    // ]),
+    ...mapGetters('master', [
+      'dataTypeProducts', 'dataMaterials', 'dataColors'
+    ]),
 
     dataProducts() {
       return this.dataProduct; // Lấy dữ liệu từ getter
@@ -121,17 +137,24 @@ export default {
   },
 
   methods: {
-    showAddProduct() {
-      this.isShowAddProduct = !this.isShowAddProduct;
-    },
-
     ...mapActions("product", [
       "getDataProduct", 'editProduct', 'deleteProduct', 'sortProduct', 'getDataProduct'
     ]),
 
     ...mapActions("master", [
-      'getDataColors'
+      'getDataTypeProducts', 'getDataMaterials', 'getDataColors'
     ]),
+
+    showAddProduct() {
+      this.isShowAddProduct = !this.isShowAddProduct;
+      if (this.isShowAddProduct == false) {
+        this.getDataTypeProducts();
+        this.getDataMaterials();
+        this.getDataColors();
+
+        // console.log('x', this.getDataTypeProducts());
+      }
+    },
 
     editItemProduct(product) {
       this.editProduct(product);
@@ -142,7 +165,7 @@ export default {
     },
 
     sortItemProduct(column, sort) {
-      this.sortProduct({'column': column, 'sort': sort});
+      this.sortProduct({ 'column': column, 'sort': sort });
     },
 
     updateFilter(value) {
@@ -151,13 +174,12 @@ export default {
 
     filterItemProduct() {
       this.getDataProduct(this.valueFilter);
-    }
+    },
+
   },
 
   mounted() {
     this.getDataProduct(); // Gọi action để load dữ liệu
-    console.log(this.getDataColors());
-    
   }
 }
 </script>
@@ -191,6 +213,7 @@ export default {
   padding: 0;
   margin: 0;
 }
+
 .fm-svg {
   width: 0.7rem;
   margin: -1px;
@@ -198,11 +221,12 @@ export default {
   color: rgba(151, 151, 151, 0.829);
   cursor: pointer;
 }
+
 .fm-svg:hover {
   color: #292929;
 }
+
 .fm-svg-active {
   color: #292929;
 }
-
 </style>

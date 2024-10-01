@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p class="fs-4">Mã giảm giá</p>
+    <p class="fs-4">Loại thiết kế</p>
 
     <div class="fm-input-group my-4">
       <input type="text" class="form-control" placeholder="Search">
@@ -78,48 +78,4 @@
 </script>
 
 <style scoped>
-.fm-table {
-  height: calc(100vh - 30vh);
-  margin: 0;
-}
-
-.fm-thead {
-  position: sticky;
-  top: 0;
-}
-
-.btn-table {
-  margin: 0 0.1rem;
-  padding: 1px 6px 2px 6px;
-  width: fit-content;
-}
-
-.fm-input-group {
-  display: flex;
-  width: calc(100% - 60%);
-}
-
-.group-sort {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0;
-  margin: 0;
-}
-
-.fm-svg {
-  width: 0.7rem;
-  margin: -1px;
-  padding: 0;
-  color: rgba(151, 151, 151, 0.829);
-  cursor: pointer;
-}
-
-.fm-svg:hover {
-  color: #292929;
-}
-
-.fm-svg-active {
-  color: #292929;
-}
 </style>

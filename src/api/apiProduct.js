@@ -14,6 +14,16 @@ export async function apiListProduct(params) {
   }
 }
 
+export async function apiCreateProduct(params) {
+  try {
+    const {data} = params;
+    
+    return data;
+  } catch (error) {
+    return {error};
+  }
+}
+
 export async function apiDeleteProduct(params) {
   try {
     const {data} = await axios.delete(`${domain}/${params}`);
