@@ -27,10 +27,10 @@ const mutations = {
 const actions = {
     async getDataTypeProducts({commit}, valueTypeProduct) {
         const response = await apiListTypeProduct(valueTypeProduct);
-        console.log(response);
+        // console.log(response);
         
         if (response.error) {
-            console.error(response.error);
+            // console.error(response.error);
             return false;
         }
 
@@ -41,7 +41,7 @@ const actions = {
         const response = await apiListMaterial(valueMaterial);
         
         if (response.error) {
-            console.error(response.error);
+            // console.error(response.error);
             return false;
         }
 
@@ -52,7 +52,7 @@ const actions = {
         const response = await apiListColor(valueColor);
 
         if (response.error) {
-            console.error(response.error);
+            // console.error(response.error);
             return false;            
         }
 

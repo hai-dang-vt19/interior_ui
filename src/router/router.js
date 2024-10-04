@@ -16,6 +16,9 @@ import AgencyPage from "@/views/admin/AgencyPage.vue";
 import DiscountPage from "@/views/admin/DiscountPage.vue";
 import RolePage from "@/views/admin/RolePage.vue";
 import HistorySystemPage from "@/views/admin/HistorySystemPage.vue";
+import TypeProductPage from "@/views/admin/TypeProductPage.vue";
+import MaterialPage from "@/views/admin/MaterialPage.vue";
+import ColorPage from "@/views/admin/ColorPage.vue";
 
 import ClientLayout from "@/layouts/ClientLayout.vue";
 import HomePage from "@/views/client/HomePage.vue";
@@ -93,7 +96,22 @@ const routes = [
         path: 'history-system',
         name: 'HistorySystemPage',
         component: HistorySystemPage
-      }
+      },
+      {
+        path: 'type-product',
+        name: 'TypeProductPage',
+        component: TypeProductPage
+      },
+      {
+        path: 'material',
+        name: 'MaterialPage',
+        component: MaterialPage
+      },
+      {
+        path: 'color',
+        name: 'ColorPage',
+        component: ColorPage
+      },
     ],
   },
 

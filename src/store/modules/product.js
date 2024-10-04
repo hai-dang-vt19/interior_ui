@@ -1,17 +1,8 @@
-import {apiListProduct, apiDeleteProduct, apiSortProduct} from '@/api/apiProduct';
+import {apiListProduct, apiCreateProduct, apiDeleteProduct, apiSortProduct} from '@/api/apiProduct';
 
 const state = {
   dataProduct: [],
-  product: { 
-    isActive: '',
-    product_id: '', 
-    product_name: '', 
-    type_name: '', 
-    quantity: '', 
-    price: '', 
-    discount: '', 
-    status: ''
-  },
+  product: {},
   valueFilter: null
 };
 
@@ -42,6 +33,20 @@ const actions = {
     }
 
     commit('setDataProduct', response);
+    return true;
+  },
+
+  async createProduct({commit}, params) {
+    const response = await apiCreateProduct(params);
+
+    if (response.error) {
+      console.log(response.error);
+      return false;
+    }
+
+    const newDataProducts = await apiListProduct(null);
+    
+    commit('setDataProduct', newDataProducts)
     return true;
   },
 
